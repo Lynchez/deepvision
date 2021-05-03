@@ -153,20 +153,6 @@ frames = cv.get_frames('~/Downloads/demo.mp4', '~/Downloads/demo_frames/')
 cv.animate(frames, '~/Documents/frames.gif')
 ```
 
-## Sponsor
-Developing and maintaining open source projects takes a lot of time and effort. If you are getting value out of this project, consider supporting my work by simply [buying me a coffee](https://buymeacoffee.com/arunponnusamy) (one time or every month).
-
-## License
-fastcv is released under MIT license.
-
-## Help
-For bugs and feature requests, feel free to file a [GitHub issue](https://github.com/arunponnusamy/fastcv/issues). (Make sure to check whether the issue has been filed already) 
-
-For usage related how-to questions, please create a new question on [StackOverflow](https://stackoverflow.com/questions/tagged/fastcv) with the tag `fastcv`.
-
-## Community
-Join the official [Discord Server](https://discord.gg/CHHQJZGWfh) or [GitHub Discussions](https://github.com/arunponnusamy/fastcv/discussions) to talk about all things fastcv.
-
 ## Citation
 If you find fastcv helpful in your work, please cite the following
 ```BibTex
