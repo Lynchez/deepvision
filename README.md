@@ -1,13 +1,11 @@
-[![Downloads](https://static.pepy.tech/personalized-badge/cvlib?period=total&units=international_system&left_color=grey&right_color=blue&left_text=pip%20installs)](https://pepy.tech/project/cvlib) [![PyPI](https://img.shields.io/pypi/v/cvlib.svg?color=blue)](https://pypi.org/project/cvlib/)
-
-# deepvision
+# fastcv
 A simple, high level, easy-to-use open source Computer Vision library for Python.
 
 ## Installation
 
 ### Installing dependencies
 
-Provided the below python packages are installed, cvlib is completely pip installable.
+Provided the below python packages are installed, fastcv is completely pip installable.
 
 * OpenCV
 * TensorFlow
@@ -24,18 +22,18 @@ If you are not sure, just go with the cpu-only `tensorflow` package.
 
 You can also compile OpenCV from source to enable CUDA optimizations for Nvidia GPU.
 
-### Installing cvlib
+### Installing fastcv
 
-`pip install cvlib`
+`pip install fastcv`
 
 To upgrade to the newest version
-`pip install --upgrade cvlib`
+`pip install --upgrade fastcv`
 
 #### Optional
-If you want to build cvlib from source, clone this repository and run the below commands.
+If you want to build fastcv from source, clone this repository and run the below commands.
 ```
-git clone https://github.com/arunponnusamy/cvlib.git
-cd cvlib
+git clone https://github.com/Lynchez/fastcv.git
+cd fastcv
 pip install .
 ```
 
@@ -46,10 +44,10 @@ Detecting faces in an image is as simple as just calling the function `detect_fa
 ### Example :
 
 ```python
-import cvlib as cv
+import fastcv as cv
 faces, confidences = cv.detect_face(image)
 ```
-Seriously, that's all it takes to do face detection with `cvlib`. Underneath it is using OpenCV's `dnn` module with a pre-trained caffemodel to detect faces.
+Seriously, that's all it takes to do face detection with `fastcv`. Underneath it is using OpenCV's `dnn` module with a pre-trained caffemodel to detect faces.
 
 To enable GPU
 ```python
@@ -71,7 +69,7 @@ Once face is detected, it can be passed on to `detect_gender()` function to reco
 label, confidence = cv.detect_gender(face)
 ```
 
-Underneath `cvlib` is using an AlexNet-like model trained on [Adience dataset](https://talhassner.github.io/home/projects/Adience/Adience-data.html#agegender) by Gil Levi and Tal Hassner for their [CVPR 2015 ](https://talhassner.github.io/home/publication/2015_CVPR) paper.
+Underneath `fastcv` is using an AlexNet-like model trained on [Adience dataset](https://talhassner.github.io/home/projects/Adience/Adience-data.html#agegender) by Gil Levi and Tal Hassner for their [CVPR 2015 ](https://talhassner.github.io/home/publication/2015_CVPR) paper.
 
 To enable GPU
 ```python
@@ -90,8 +88,8 @@ Detecting common objects in the scene is enabled through a single function call 
 ### Example :
 
 ```python
-import cvlib as cv
-from cvlib.object_detection import draw_bbox
+import fastcv as cv
+from fastcv.object_detection import draw_bbox
 
 bbox, label, conf = cv.detect_common_objects(img)
 
@@ -119,7 +117,7 @@ Other supported models: YOLOv3, YOLOv3-tiny.
 ### Custom trained YOLO weights
 To run inference with custom trained YOLOv3/v4 weights try the following
 ```python
-from cvlib.object_detection import YOLO
+from fastcv.object_detection import YOLO
 
 yolo = YOLO(weights, config, labels)
 bbox, label, conf = yolo.detect_objects(img)
@@ -140,7 +138,7 @@ Checkout the [example](examples/yolo_custom_weights_inference.py) to learn more.
 ### Video to frames
 `get_frames( )` method can be helpful when you want to grab all the frames from a video. Just pass the path to the video, it will return all the frames in a list. Each frame in the list is a numpy array.
 ```python
-import cvlib as cv
+import fastcv as cv
 frames = cv.get_frames('~/Downloads/demo.mp4')
 ```
 Optionally you can pass in a directory path to save all the frames to disk.
@@ -159,24 +157,24 @@ cv.animate(frames, '~/Documents/frames.gif')
 Developing and maintaining open source projects takes a lot of time and effort. If you are getting value out of this project, consider supporting my work by simply [buying me a coffee](https://buymeacoffee.com/arunponnusamy) (one time or every month).
 
 ## License
-cvlib is released under MIT license.
+fastcv is released under MIT license.
 
 ## Help
-For bugs and feature requests, feel free to file a [GitHub issue](https://github.com/arunponnusamy/cvlib/issues). (Make sure to check whether the issue has been filed already) 
+For bugs and feature requests, feel free to file a [GitHub issue](https://github.com/arunponnusamy/fastcv/issues). (Make sure to check whether the issue has been filed already) 
 
-For usage related how-to questions, please create a new question on [StackOverflow](https://stackoverflow.com/questions/tagged/cvlib) with the tag `cvlib`.
+For usage related how-to questions, please create a new question on [StackOverflow](https://stackoverflow.com/questions/tagged/fastcv) with the tag `fastcv`.
 
 ## Community
-Join the official [Discord Server](https://discord.gg/CHHQJZGWfh) or [GitHub Discussions](https://github.com/arunponnusamy/cvlib/discussions) to talk about all things cvlib.
+Join the official [Discord Server](https://discord.gg/CHHQJZGWfh) or [GitHub Discussions](https://github.com/arunponnusamy/fastcv/discussions) to talk about all things fastcv.
 
 ## Citation
-If you find cvlib helpful in your work, please cite the following
+If you find fastcv helpful in your work, please cite the following
 ```BibTex
-@misc{ar2018cvlib,
-  author =       {Arun Ponnusamy},
-  title =        {cvlib - high level Computer Vision library for Python},
-  howpublished = {\url{https://github.com/arunponnusamy/cvlib}},
-  year =         {2018}
+@misc{ar2021fastcv,
+  author =       {Nurettin Sinanoğlu},
+  title =        {fastcv - Easy to use Computer Vision library for Python},
+  howpublished = {\url{https://github.com/Lynchez/fastcv}},
+  year =         {2021}
 }
 ```
 
