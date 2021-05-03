@@ -1,9 +1,3 @@
-# author: Arun Ponnusamy
-# website: https://www.arunponnusamy.com
-
-# face detection example
-# usage: python face_detection.py <input_image>
-
 # import necessary packages
 import cvlib as cv
 import sys
@@ -11,7 +5,7 @@ import cv2
 import os 
 
 # read input image
-image = cv2.imread(sys.argv[1])
+image = cv2.imread("test2.png")
 
 # apply face detection
 faces, confidences = cv.detect_face(image)
