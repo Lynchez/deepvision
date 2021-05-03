@@ -1,9 +1,3 @@
-# author: Arun Ponnusamy
-# website: https://www.arunponnusamy.com
-
-# gender detection example
-# usage: python gender_detection.py <input_image>
-
 # import necessary packages
 import cv2
 import cvlib as cv
@@ -11,7 +5,7 @@ import sys
 import numpy as np
 
 # read input image
-img = cv2.imread(sys.argv[1])
+img = cv2.imread("test2.png")
 
 # apply face detection
 face, conf = cv.detect_face(img)
