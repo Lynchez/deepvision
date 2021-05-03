@@ -95,7 +95,7 @@ bbox, label, conf = cv.detect_common_objects(img)
 
 output_image = draw_bbox(img, bbox, label, conf)
 ```
-Underneath it uses [YOLOv4](https://github.com/AlexeyAB/darknet) model trained on [COCO dataset](http://cocodataset.org/) capable of detecting 80 [common objects](https://github.com/arunponnusamy/object-detection-opencv/blob/master/yolov3.txt) in context.
+Underneath it uses [YOLOv4](https://github.com/AlexeyAB/darknet) model trained on [COCO dataset](http://cocodataset.org/) capable of detecting 80 objects.
 
 To enable GPU
 ```python
@@ -104,7 +104,7 @@ bbox, label, conf = cv.detect_common_objects(img, enable_gpu=True)
 
 Checkout `object_detection.py` in `examples` directory for the complete code.
 
-### Real time object detection
+### Real time object detection and object tracking
 `YOLOv4` is actually a heavy model to run on CPU. If you are working with real time webcam / video feed and doesn't have GPU, try using `tiny yolo` which is a smaller version of the original YOLO model. It's significantly fast but less accurate.
 
 ```python
