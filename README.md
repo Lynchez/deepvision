@@ -24,10 +24,10 @@ You can also compile OpenCV from source to enable CUDA optimizations for Nvidia 
 
 ### Installing deepvision
 
-`pip install deepvision` (Soon)
+`pip install deepvision` 
 
 To upgrade to the newest version
-`pip install --upgrade deepvision`(Soon)
+`pip install --upgrade deepvision`
 
 #### Optional
 If you want to build deepvision from source, clone this repository and run the below commands.
