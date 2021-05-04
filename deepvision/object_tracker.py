@@ -1,25 +1,29 @@
 import numpy as np
 import cv2
-from deep_sort import preprocessing
-from deep_sort import nn_matching
-from deep_sort.detection import Detection
-from deep_sort.detection_yolo import Detection_YOLO
-from deep_sort.tracker import Tracker
-from tools import generate_detections as gdet
+from .deep_sort import *
+from .generate_detections import *
+from .utils import download_file
 
 max_cosine_distance = 0.3
 nn_budget = None
 nms_max_overlap = 1.0
 tracking = True
+dest_dir = os.path.expanduser('~') + os.path.sep + '.deepvision' + os.path.sep + 'object_detection' + os.path.sep + 'yolo' + os.path.sep + 'yolov3'
 
 # Deep SORT
-model_filename = 'model_data/mars-small128.pb'
-encoder = gdet.create_box_encoder(model_filename, batch_size=1)
+model_filename = 'mars-small128.pb'
+model_path = dest_dir + os.path.sep + model_filename
+cfg_url = 'https://github.com/Lynchez/deepvision/raw/master/model_data/mars-small128.pb'
 
-metric = nn_matching.NearestNeighborDistanceMetric("cosine", max_cosine_distance, nn_budget)
+if not os.path.exists(model_path):
+    download_file(url=cfg_url, file_name=model_filename, dest_dir=dest_dir)
+
+encoder = create_box_encoder(model_path, batch_size=1)
+metric = NearestNeighborDistanceMetric("cosine", max_cosine_distance, nn_budget)
 tracker = Tracker(metric)
 
 def Track(boxes, classes, confidence, frame):
+
     if tracking:
         features = encoder(frame, boxes)
 
@@ -32,7 +36,7 @@ def Track(boxes, classes, confidence, frame):
     # Run non-maxima suppression.
     boxes = np.array([d.tlwh for d in detections])
     scores = np.array([d.confidence for d in detections])
-    indices = preprocessing.non_max_suppression(boxes, nms_max_overlap, scores)
+    indices = non_max_suppression(boxes, nms_max_overlap, scores)
     detections = [detections[i] for i in indices]
     
     if tracking:
@@ -44,7 +48,7 @@ def Track(boxes, classes, confidence, frame):
             continue
         bbox = track.to_tlbr()
         cv2.rectangle(frame, (int(bbox[0]), int(bbox[1])), (int(bbox[2]), int(bbox[3])), (255, 255, 255), 2)
-        cv2.putText(frame, classes[0] + " - ID: " + str(track.track_id), (int(bbox[0]), int(bbox[1])), 0,
+        cv2.putText(frame, "ID: " + str(track.track_id), (int(bbox[0]), int(bbox[1])), 0,
                     1.5e-3 * frame.shape[0], (0, 255, 0), 1)
     """
     for det in detections:

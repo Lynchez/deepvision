@@ -13,7 +13,7 @@ def populate_class_labels():
 
     class_file_name = 'yolov3_classes.txt'
     class_file_abs_path = dest_dir + os.path.sep + class_file_name
-    url = 'https://github.com/Lynchez/deepvision/raw/master/model_data/yolov3.txt'
+    url = 'https://github.com/Lynchez/deepvision/raw/master/model_data/coco_classes.txt'
     if not os.path.exists(class_file_abs_path):
         download_file(url=url, file_name=class_file_name, dest_dir=dest_dir)
     f = open(class_file_abs_path, 'r')
