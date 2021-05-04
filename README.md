@@ -1,11 +1,11 @@
-# fastcv
+# deepvision
 A simple, high level, easy-to-use open source Computer Vision library for Python.
 
 ## Installation
 
 ### Installing dependencies
 
-Provided the below python packages are installed, fastcv is completely pip installable.
+Provided the below python packages are installed, deepvision is completely pip installable.
 
 * OpenCV
 * TensorFlow
@@ -22,18 +22,18 @@ If you are not sure, just go with the cpu-only `tensorflow` package.
 
 You can also compile OpenCV from source to enable CUDA optimizations for Nvidia GPU.
 
-### Installing fastcv
+### Installing deepvision
 
-`pip install fastcv`
+`pip install deepvision`
 
 To upgrade to the newest version
-`pip install --upgrade fastcv`
+`pip install --upgrade deepvision`
 
 #### Optional
-If you want to build fastcv from source, clone this repository and run the below commands.
+If you want to build deepvision from source, clone this repository and run the below commands.
 ```
-git clone https://github.com/Lynchez/fastcv.git
-cd fastcv
+git clone https://github.com/Lynchez/deepvision.git
+cd deepvision
 pip install .
 ```
 
@@ -44,10 +44,10 @@ Detecting faces in an image is as simple as just calling the function `detect_fa
 ### Example :
 
 ```python
-import fastcv as cv
+import deepvision as cv
 faces, confidences = cv.detect_face(image)
 ```
-Seriously, that's all it takes to do face detection with `fastcv`. Underneath it is using OpenCV's `dnn` module with a pre-trained caffemodel to detect faces.
+Seriously, that's all it takes to do face detection with `deepvision`. Underneath it is using OpenCV's `dnn` module with a pre-trained caffemodel to detect faces.
 
 To enable GPU
 ```python
@@ -69,7 +69,7 @@ Once face is detected, it can be passed on to `detect_gender()` function to reco
 label, confidence = cv.detect_gender(face)
 ```
 
-Underneath `fastcv` is using an AlexNet-like model trained on [Adience dataset](https://talhassner.github.io/home/projects/Adience/Adience-data.html#agegender) by Gil Levi and Tal Hassner for their [CVPR 2015 ](https://talhassner.github.io/home/publication/2015_CVPR) paper.
+Underneath `deepvision` is using an AlexNet-like model trained on [Adience dataset](https://talhassner.github.io/home/projects/Adience/Adience-data.html#agegender) by Gil Levi and Tal Hassner for their [CVPR 2015 ](https://talhassner.github.io/home/publication/2015_CVPR) paper.
 
 To enable GPU
 ```python
@@ -88,8 +88,8 @@ Detecting common objects in the scene is enabled through a single function call 
 ### Example :
 
 ```python
-import fastcv as cv
-from fastcv.object_detection import draw_bbox
+import deepvision as cv
+from deepvision.object_detection import draw_bbox
 
 bbox, label, conf = cv.detect_common_objects(img)
 
@@ -117,7 +117,7 @@ Other supported models: YOLOv3, YOLOv3-tiny.
 ### Custom trained YOLO weights
 To run inference with custom trained YOLOv3/v4 weights try the following
 ```python
-from fastcv.object_detection import YOLO
+from deepvision.object_detection import YOLO
 
 yolo = YOLO(weights, config, labels)
 bbox, label, conf = yolo.detect_objects(img)
@@ -138,7 +138,7 @@ Checkout the [example](examples/yolo_custom_weights_inference.py) to learn more.
 ### Video to frames
 `get_frames( )` method can be helpful when you want to grab all the frames from a video. Just pass the path to the video, it will return all the frames in a list. Each frame in the list is a numpy array.
 ```python
-import fastcv as cv
+import deepvision as cv
 frames = cv.get_frames('~/Downloads/demo.mp4')
 ```
 Optionally you can pass in a directory path to save all the frames to disk.
@@ -154,12 +154,12 @@ cv.animate(frames, '~/Documents/frames.gif')
 ```
 
 ## Citation
-If you find fastcv helpful in your work, please cite the following
+If you find deepvision helpful in your work, please cite the following
 ```BibTex
-@misc{ar2021fastcv,
+@misc{ar2021deepvision,
   author =       {Nurettin Sinanoğlu},
-  title =        {fastcv - Easy to use Computer Vision library for Python},
-  howpublished = {\url{https://github.com/Lynchez/fastcv}},
+  title =        {deepvision - Easy to use Computer Vision library for Python},
+  howpublished = {\url{https://github.com/Lynchez/deepvision}},
   year =         {2021}
 }
 ```
