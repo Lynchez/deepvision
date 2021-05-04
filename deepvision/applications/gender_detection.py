@@ -7,7 +7,7 @@ class GenderDetection():
     def __init__(self):
 
         proto_url = 'https://download.fastcv.net/config/gender_detection/gender_deploy.prototxt'
-        model_url = 'https://github.com/arunponnusamy/fastcv-files/releases/download/v0.1/gender_net.caffemodel'
+        model_url = 'https://github.com/Lynchez/fastcv-files/releases/download/v0.1/gender_net.caffemodel'
         save_dir = os.path.expanduser('~') + os.path.sep + '.fastcv' + os.path.sep + 'pre-trained'
 
         if not os.path.exists(save_dir):

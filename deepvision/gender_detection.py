@@ -10,7 +10,7 @@ class GenderDetection():
     def __init__(self):
 
         proto_url = 'https://download.deepvision.net/config/gender_detection/gender_deploy.prototxt'
-        model_url = 'https://github.com/arunponnusamy/deepvision-files/releases/download/v0.1/gender_net.caffemodel'
+        model_url = 'https://github.com/Lynchez/deepvision-files/releases/download/v0.1/gender_net.caffemodel'
         save_dir = os.path.expanduser('~') + os.path.sep + '.deepvision' + os.path.sep + 'pre-trained'
 
         if not os.path.exists(save_dir):
