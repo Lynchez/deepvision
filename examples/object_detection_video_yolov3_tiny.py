@@ -1,9 +1,3 @@
-# author: Arun Ponnusamy
-# website: https://www.arunponnusamy.com
-
-# object detection video example using tiny yolo model.
-# usage: python object_detection_video_yolov3_tiny.py /path/to/video
-
 # import necessary packages
 import cvlib as cv
 from cvlib.object_detection import draw_bbox

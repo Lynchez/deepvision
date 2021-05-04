@@ -1,7 +1,3 @@
-# author: Arun Ponnusamy
-
-# object detection with yolo custom trained weights 
-# usage: python3 yolo_custom_weights_inference.py <yolov3.weights> <yolov3.config> <labels.names> <input_image>
 
 # import necessary packages
 import cvlib as cv

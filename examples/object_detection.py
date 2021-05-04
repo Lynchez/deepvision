@@ -1,8 +1,3 @@
-# author: Arun Ponnusamy
-# website: https://www.arunponnusamy.com
-
-# object detection example
-# usage: python object_detection.py <input_image>
 
 # import necessary packages
 import cvlib as cv

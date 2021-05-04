@@ -1,9 +1,3 @@
-# author: Arun Ponnusamy
-# website: https://www.arunponnusamy.com
-
-# face detection webcam example
-# usage: python face_detection_webcam.py 
-
 # import necessary packages
 import cvlib as cv
 import cv2

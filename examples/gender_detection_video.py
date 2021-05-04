@@ -1,9 +1,3 @@
-# author: Arun Ponnusamy
-# website: https://www.arunponnusamy.com
-
-# gender detection video example
-# usage: python gender_detection_video.py <video_file.mp4>
-
 # import necessary packages
 import cvlib as cv
 import cv2
