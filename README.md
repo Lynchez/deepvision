@@ -97,9 +97,13 @@ output_image = draw_bbox(img, bbox, label, conf)
 ```
 Underneath it uses [YOLOv4](https://github.com/AlexeyAB/darknet) model trained on [COCO dataset](http://cocodataset.org/) capable of detecting 80 objects.
 
-To enable GPU
+To enable GPU and Object Tracking
 ```python
-bbox, label, conf = dv.detect_common_objects(img, enable_gpu=True)
+from deepvision.object_tracker import Track
+
+boxes, classes, confidence = dv.detect_common_objects(frame, confidence=0.25, model='yolov4-tiny', enable_gpu=True)
+
+Track(boxes, classes, confidence, frame)
 ```
 
 Checkout `object_detection.py` in `examples` directory for the complete code.
