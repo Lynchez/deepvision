@@ -82,7 +82,7 @@ Checkout `gender_detection.py` in `examples` directory for the complete code.
 
 ![](examples/images/gender_detection_output.jpg)
 
-## Object detection
+## Object detection and Object Tracking
 Detecting common objects in the scene is enabled through a single function call `detect_common_objects()`. It will return the bounding box co-ordinates, corrensponding labels and confidence scores for the detected objects in the image.
 
 ### Example :
