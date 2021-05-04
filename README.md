@@ -44,14 +44,14 @@ Detecting faces in an image is as simple as just calling the function `detect_fa
 ### Example :
 
 ```python
-import deepvision as cv
-faces, confidences = cv.detect_face(image)
+import deepvision as dv
+faces, confidences = dv.detect_face(image)
 ```
 Seriously, that's all it takes to do face detection with `deepvision`. Underneath it is using OpenCV's `dnn` module with a pre-trained caffemodel to detect faces.
 
 To enable GPU
 ```python
-faces, confidences = cv.detect_face(image, enable_gpu=True)
+faces, confidences = dv.detect_face(image, enable_gpu=True)
 ```
 
 Checkout `face_detection.py` in `examples` directory for the complete code.
@@ -66,14 +66,14 @@ Once face is detected, it can be passed on to `detect_gender()` function to reco
 ### Example
 
 ```python
-label, confidence = cv.detect_gender(face)
+label, confidence = dv.detect_gender(face)
 ```
 
 Underneath `deepvision` is using an AlexNet-like model trained on [Adience dataset](https://talhassner.github.io/home/projects/Adience/Adience-data.html#agegender) by Gil Levi and Tal Hassner for their [CVPR 2015 ](https://talhassner.github.io/home/publication/2015_CVPR) paper.
 
 To enable GPU
 ```python
-label, confidence = cv.detect_gender(face, enable_gpu=True)
+label, confidence = dv.detect_gender(face, enable_gpu=True)
 ```
 
 Checkout `gender_detection.py` in `examples` directory for the complete code.
@@ -88,10 +88,10 @@ Detecting common objects in the scene is enabled through a single function call 
 ### Example :
 
 ```python
-import deepvision as cv
+import deepvision as dv
 from deepvision.object_detection import draw_bbox
 
-bbox, label, conf = cv.detect_common_objects(img)
+bbox, label, conf = dv.detect_common_objects(img)
 
 output_image = draw_bbox(img, bbox, label, conf)
 ```
@@ -99,7 +99,7 @@ Underneath it uses [YOLOv4](https://github.com/AlexeyAB/darknet) model trained o
 
 To enable GPU
 ```python
-bbox, label, conf = cv.detect_common_objects(img, enable_gpu=True)
+bbox, label, conf = dv.detect_common_objects(img, enable_gpu=True)
 ```
 
 Checkout `object_detection.py` in `examples` directory for the complete code.
@@ -108,7 +108,7 @@ Checkout `object_detection.py` in `examples` directory for the complete code.
 `YOLOv4` is actually a heavy model to run on CPU. If you are working with real time webcam / video feed and doesn't have GPU, try using `tiny yolo` which is a smaller version of the original YOLO model. It's significantly fast but less accurate.
 
 ```python
-bbox, label, conf = cv.detect_common_objects(img, confidence=0.25, model='yolov4-tiny')
+bbox, label, conf = dv.detect_common_objects(img, confidence=0.25, model='yolov4-tiny')
 ```
 Check out the [example](examples/object_detection_webcam.py) to learn more. 
 
@@ -138,19 +138,19 @@ Checkout the [example](examples/yolo_custom_weights_inference.py) to learn more.
 ### Video to frames
 `get_frames( )` method can be helpful when you want to grab all the frames from a video. Just pass the path to the video, it will return all the frames in a list. Each frame in the list is a numpy array.
 ```python
-import deepvision as cv
-frames = cv.get_frames('~/Downloads/demo.mp4')
+import deepvision as dv
+frames = dv.get_frames('~/Downloads/demo.mp4')
 ```
 Optionally you can pass in a directory path to save all the frames to disk.
 ```python
-frames = cv.get_frames('~/Downloads/demo.mp4', '~/Downloads/demo_frames/')
+frames = dv.get_frames('~/Downloads/demo.mp4', '~/Downloads/demo_frames/')
 ```
 
 ### Creating gif
 `animate( )` method lets you create gif from a list of images. Just pass a list of images or path to a directory containing images and output gif name as arguments to the method, it will create a gif out of the images and save it to disk for you.
 
 ```python
-cv.animate(frames, '~/Documents/frames.gif')
+dv.animate(frames, '~/Documents/frames.gif')
 ```
 
 ## Citation
