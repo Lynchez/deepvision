@@ -110,7 +110,7 @@ Track(boxes, classes, confidence, frame)
 
 Checkout `object_detection.py` in `examples` directory for the complete code.
 
-## Object detection and object tracking
+## Object detection and Object tracking
 `YOLOv4` is actually a heavy model to run on CPU. If you are working with real time webcam / video feed and doesn't have GPU, try using `tiny yolo` which is a smaller version of the original YOLO model. It's significantly fast but less accurate.
 
 ![](examples/images/track.gif)
