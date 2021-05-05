@@ -14,7 +14,7 @@ while webcam.isOpened():
 
     # apply object detection
     boxes, classes, confidence = cv.detect_common_objects(frame, confidence=0.25, model='yolov4-tiny')
-    Track(boxes, classes, confidence, frame)
+    frame = Track(boxes, classes, confidence, frame)
 
     # display output
     cv2.imshow("Real-time object detection", frame)

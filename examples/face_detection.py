@@ -1,5 +1,5 @@
 # import necessary packages
-import cvlib as cv
+import deepvision as dv
 import sys
 import cv2
 import os 
@@ -8,7 +8,7 @@ import os
 image = cv2.imread("test2.png")
 
 # apply face detection
-faces, confidences = cv.detect_face(image)
+faces, confidences = dv.detect_face(image)
 
 print(faces)
 print(confidences)

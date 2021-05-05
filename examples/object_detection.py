@@ -1,7 +1,7 @@
 
 # import necessary packages
-import cvlib as cv
-from cvlib.object_detection import draw_bbox
+import deepvision as dv
+from deepvision.object_detection import draw_bbox
 import sys
 import cv2
 
@@ -9,7 +9,7 @@ import cv2
 image = cv2.imread(sys.argv[1])
 
 # apply object detection
-bbox, label, conf = cv.detect_common_objects(image)
+bbox, label, conf = dv.detect_common_objects(image)
 
 print(bbox, label, conf)
 

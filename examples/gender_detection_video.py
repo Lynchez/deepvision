@@ -1,5 +1,5 @@
 # import necessary packages
-import cvlib as cv
+import deepvision as dv
 import cv2
 import numpy as np
 import sys
@@ -41,7 +41,7 @@ while webcam.isOpened():
         face_crop = np.copy(frame[startY:endY, startX:endX])
 
         # apply face detection    
-        (label, confidence) = cv.detect_gender(face_crop)
+        (label, confidence) = dv.detect_gender(face_crop)
 
         print(confidence)
         print(label)

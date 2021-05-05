@@ -1,7 +1,7 @@
 
 # import necessary packages
-import cvlib as cv
-from cvlib.object_detection import YOLO
+import deepvision as dv
+from deepvision.object_detection import YOLO
 import cv2
 import sys
 

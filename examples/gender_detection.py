@@ -1,6 +1,6 @@
 # import necessary packages
 import cv2
-import cvlib as cv
+import deepvision as dv
 import sys
 import numpy as np
 
@@ -24,7 +24,7 @@ for f in face:
     face_crop = np.copy(img[startY:endY, startX:endX])
 
     # apply gender detection
-    (label, confidence) = cv.detect_gender(face_crop)
+    (label, confidence) = dv.detect_gender(face_crop)
 
     print(confidence)
     print(label)

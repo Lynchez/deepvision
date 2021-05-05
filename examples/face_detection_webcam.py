@@ -1,5 +1,5 @@
 # import necessary packages
-import cvlib as cv
+import deepvision as dv
 import cv2
 
 # open webcam
@@ -21,7 +21,7 @@ while webcam.isOpened():
         exit()
 
     # apply face detection
-    face, confidence = cv.detect_face(frame)
+    face, confidence = dv.detect_face(frame)
 
     print(face)
     print(confidence)
