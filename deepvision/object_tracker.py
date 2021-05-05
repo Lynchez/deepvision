@@ -9,6 +9,7 @@ nn_budget = None
 nms_max_overlap = 1.0
 tracking = True
 dest_dir = os.path.expanduser('~') + os.path.sep + '.deepvision' + os.path.sep + 'object_detection' + os.path.sep + 'yolo' + os.path.sep + 'yolov3'
+colors = np.random.uniform(0, 255, size=(80, 3))
 
 # Deep SORT
 model_filename = 'mars-small128.pb'
@@ -24,6 +25,14 @@ tracker = Tracker(metric)
 
 def Track(boxes, classes, confidence, frame):
 
+    for i, label in enumerate(classes):
+
+        color = colors[classes.index(label)]
+
+        cv2.rectangle(frame, (boxes[i][0],boxes[i][1]), (boxes[i][2],boxes[i][3]), color, 2)
+
+        cv2.putText(frame, label, (boxes[i][0],boxes[i][1]-15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+    
     if tracking:
         features = encoder(frame, boxes)
 
@@ -47,16 +56,7 @@ def Track(boxes, classes, confidence, frame):
         if not track.is_confirmed() or track.time_since_update > 1:
             continue
         bbox = track.to_tlbr()
-        cv2.rectangle(frame, (int(bbox[0]), int(bbox[1])), (int(bbox[2]), int(bbox[3])), (255, 255, 255), 2)
         cv2.putText(frame, "ID: " + str(track.track_id), (int(bbox[0]), int(bbox[1])), 0,
-                    1.5e-3 * frame.shape[0], (0, 255, 0), 1)
-    """
-    for det in detections:
-        bbox = det.to_tlbr()
-        score = "%.2f" % round(det.confidence * 100, 2) + "%"
-        cv2.rectangle(frame, (int(bbox[0]), int(bbox[1])), (int(bbox[2]), int(bbox[3])), (255, 0, 0), 2)
-        if len(classes) > 0:
-            cls = det.cls
-            cv2.putText(frame, str(cls) + " " + score, (int(bbox[0]), int(bbox[3])), 0,
-                        1.5e-3 * frame.shape[0], (0, 255, 0), 1)
-    """
+                    0.5, (0, 255, 0), 2)
+
+    return frame

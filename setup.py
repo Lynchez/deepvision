@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='deepvision',
-      version='0.0.24',
+      version='0.0.31',
       description='Easy to use, open source computer vision library for python',
       long_description='Easy to use, open source computer vision library for python',        
       url='https://github.com/Lynchez/deepvision.git',
