@@ -82,10 +82,12 @@ Checkout `gender_detection.py` in `examples` directory for the complete code.
 
 ![](examples/images/gender_detection_output.jpg)
 
-## Object detection and Object Tracking
+## Object detection 
 Detecting common objects in the scene is enabled through a single function call `detect_common_objects()`. It will return the bounding box co-ordinates, corrensponding labels and confidence scores for the detected objects in the image.
 
 ### Example :
+
+![](examples/images/detect.gif)
 
 ```python
 import deepvision as dv
@@ -108,7 +110,7 @@ Track(boxes, classes, confidence, frame)
 
 Checkout `object_detection.py` in `examples` directory for the complete code.
 
-### Real time object detection and object tracking
+## Object detection and object tracking
 `YOLOv4` is actually a heavy model to run on CPU. If you are working with real time webcam / video feed and doesn't have GPU, try using `tiny yolo` which is a smaller version of the original YOLO model. It's significantly fast but less accurate.
 
 ![](examples/images/track.gif)
