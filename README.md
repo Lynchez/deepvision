@@ -111,6 +111,8 @@ Checkout `object_detection.py` in `examples` directory for the complete code.
 ### Real time object detection and object tracking
 `YOLOv4` is actually a heavy model to run on CPU. If you are working with real time webcam / video feed and doesn't have GPU, try using `tiny yolo` which is a smaller version of the original YOLO model. It's significantly fast but less accurate.
 
+![](examples/images/track.gif)
+
 ```python
 bbox, label, conf = dv.detect_common_objects(img, confidence=0.25, model='yolov4-tiny')
 ```
