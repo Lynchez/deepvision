@@ -138,10 +138,6 @@ bbox, label, conf = yolo.detect_objects(img, enable_gpu=True)
 
 Checkout the [example](examples/yolo_custom_weights_inference.py) to learn more.
 
-### Sample output :
-
-![](examples/images/object_detection_output.jpg)
-
 ## Utils
 ### Video to frames
 `get_frames( )` method can be helpful when you want to grab all the frames from a video. Just pass the path to the video, it will return all the frames in a list. Each frame in the list is a numpy array.
