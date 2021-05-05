@@ -39,49 +39,6 @@ pip install .
 
 **Note: Compatability with Python 2.x is not officially tested.**
 
-## Face detection
-Detecting faces in an image is as simple as just calling the function `detect_face()`. It will return the bounding box corners and corresponding confidence for all the faces detected.
-### Example :
-
-```python
-import deepvision as dv
-faces, confidences = dv.detect_face(image)
-```
-Seriously, that's all it takes to do face detection with `deepvision`. Underneath it is using OpenCV's `dnn` module with a pre-trained caffemodel to detect faces.
-
-To enable GPU
-```python
-faces, confidences = dv.detect_face(image, enable_gpu=True)
-```
-
-Checkout `face_detection.py` in `examples` directory for the complete code.
-
-### Sample output :
-
-![](examples/images/face_detection_output.jpg)
-
-## Gender detection
-Once face is detected, it can be passed on to `detect_gender()` function to recognize gender. It will return the labels (man, woman) and associated probabilities.
-
-### Example
-
-```python
-label, confidence = dv.detect_gender(face)
-```
-
-Underneath `deepvision` is using an AlexNet-like model trained on [Adience dataset](https://talhassner.github.io/home/projects/Adience/Adience-data.html#agegender) by Gil Levi and Tal Hassner for their [CVPR 2015 ](https://talhassner.github.io/home/publication/2015_CVPR) paper.
-
-To enable GPU
-```python
-label, confidence = dv.detect_gender(face, enable_gpu=True)
-```
-
-Checkout `gender_detection.py` in `examples` directory for the complete code.
-
-### Sample output :
-
-![](examples/images/gender_detection_output.jpg)
-
 ## Object detection 
 Detecting common objects in the scene is enabled through a single function call `detect_common_objects()`. It will return the bounding box co-ordinates, corrensponding labels and confidence scores for the detected objects in the image.
 
@@ -137,6 +94,51 @@ bbox, label, conf = yolo.detect_objects(img, enable_gpu=True)
 ```
 
 Checkout the [example](examples/yolo_custom_weights_inference.py) to learn more.
+
+
+## Face detection
+Detecting faces in an image is as simple as just calling the function `detect_face()`. It will return the bounding box corners and corresponding confidence for all the faces detected.
+### Example :
+
+```python
+import deepvision as dv
+faces, confidences = dv.detect_face(image)
+```
+Seriously, that's all it takes to do face detection with `deepvision`. Underneath it is using OpenCV's `dnn` module with a pre-trained caffemodel to detect faces.
+
+To enable GPU
+```python
+faces, confidences = dv.detect_face(image, enable_gpu=True)
+```
+
+Checkout `face_detection.py` in `examples` directory for the complete code.
+
+### Sample output :
+
+![](examples/images/face_detection_output.jpg)
+
+## Gender detection
+Once face is detected, it can be passed on to `detect_gender()` function to recognize gender. It will return the labels (man, woman) and associated probabilities.
+
+### Example
+
+```python
+label, confidence = dv.detect_gender(face)
+```
+
+Underneath `deepvision` is using an AlexNet-like model trained on [Adience dataset](https://talhassner.github.io/home/projects/Adience/Adience-data.html#agegender) by Gil Levi and Tal Hassner for their [CVPR 2015 ](https://talhassner.github.io/home/publication/2015_CVPR) paper.
+
+To enable GPU
+```python
+label, confidence = dv.detect_gender(face, enable_gpu=True)
+```
+
+Checkout `gender_detection.py` in `examples` directory for the complete code.
+
+### Sample output :
+
+![](examples/images/gender_detection_output.jpg)
+
 
 ## Utils
 ### Video to frames
