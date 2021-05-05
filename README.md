@@ -62,7 +62,7 @@ from deepvision.object_tracker import Track
 
 boxes, classes, confidence = dv.detect_common_objects(frame, confidence=0.25, model='yolov4-tiny', enable_gpu=True)
 
-Track(boxes, classes, confidence, frame)
+frame = rack(boxes, classes, confidence, frame)
 ```
 
 Checkout `object_detection.py` in `examples` directory for the complete code.
