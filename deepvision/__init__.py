@@ -1,4 +1,4 @@
-__version__ = "0.0.33"
+__version__ = "0.0.36"
 
 from .face_detection import detect_face
 from .object_detection import detect_common_objects, TFlite, YOLO

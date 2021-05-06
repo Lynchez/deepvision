@@ -269,12 +269,31 @@ class YOLO:
             cv2.putText(img, label, (bbox[i][0],bbox[i][1]-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
 
 class TFlite:
-    def __init__(self, tflite_model, coconames):
+    def __init__(self, tflite_model="default", coconames="default"):
         import tensorflow as tf
-        self.interpreter = tf.lite.Interpreter(model_path=tflite_model)
+        config_file_name = 'coconames.txt'
+        cfg_url = 'https://github.com/Lynchez/deepvision/raw/master/model_data/coconames.txt'
+        weights_file_name = 'detect.tflite'
+        weights_url = 'https://tfhub.dev/tensorflow/lite-model/efficientdet/lite3/detection/default/1?lite-format=tflite'
+        dest_dir = os.path.expanduser('~') + os.path.sep + '.deepvision' + os.path.sep + 'object_detection' + os.path.sep + 'yolo' + os.path.sep + 'yolov3'
+
+        config_file_abs_path = dest_dir + os.path.sep + config_file_name
+        weights_file_abs_path = dest_dir + os.path.sep + weights_file_name   
+
+        if not os.path.exists(weights_file_abs_path):
+            download_file(url=cfg_url, file_name=config_file_name, dest_dir=dest_dir)
+            download_file(url=weights_url, file_name=weights_file_name, dest_dir=dest_dir)
+
+        if tflite_model == "default":
+            self.interpreter = tf.lite.Interpreter(model_path=weights_file_abs_path)
+            with open(config_file_abs_path, 'r') as f:
+                self.labels = [line.strip() for line in f.readlines()]
+        else:
+            self.interpreter = tf.lite.Interpreter(model_path=tflite_model)
+            with open(coconames, 'r') as f:
+                self.labels = [line.strip() for line in f.readlines()]
+
         self.interpreter.allocate_tensors()
-        with open(coconames, 'r') as f:
-            self.labels = [line.strip() for line in f.readlines()]
         # Get input and output tensors.
         self.input_details = self.interpreter.get_input_details()
         self.output_details = self.interpreter.get_output_details()
