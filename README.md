@@ -95,6 +95,7 @@ bbox, label, conf = yolo.detect_objects(img, enable_gpu=True)
 
 Checkout the [example](examples/yolo_custom_weights_inference.py) to learn more.
 
+### TFlite with Tracking (Soon)
 
 ## Face detection
 Detecting faces in an image is as simple as just calling the function `detect_face()`. It will return the bounding box corners and corresponding confidence for all the faces detected.
